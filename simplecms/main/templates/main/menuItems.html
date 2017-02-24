@@ -1,0 +1,41 @@
+      {% for menuItem in menuItems %}
+      
+        {% if forloop.first %}
+          <li class="hasSubMenu">
+        {% else %}
+              <li>
+        {% endif %}
+               
+               {% if menuItem.id == 20 or menuItem.id == 17 or menuItem.id == 21%}
+                 <!-- 當取出來的文章為例會照片或旅遊活動照片或家懇照片時不顯示 -->
+               {% elif menuItem.id == 26%}<!-- 取出來是社員專區中的照片 -->
+                 <li class="hasSubMenu">  <!-- 顯示第三層例會照片＆旅遊活動照片＆家懇照片 -->
+                   <a href="{% url 'showPage:main' menuItem.id %}">{{menuItem.name}}<span class="caret"></span></a>
+                   <ul>
+                     <li><a href="{% url 'showPage:main' 20 %}">例會照片</a></li>
+                     <li><a href="{% url 'showPage:main' 17 %}">旅遊活動照片</a></li>
+                     <li><a href="{% url 'showPage:main' 21 %}">家懇照片</a></li>
+                   </ul>
+                 </li>            <!-- 當後端有新增刪除page時，這裡須大改 -->
+                {% else %}
+                <a href="{% url 'showPage:main' menuItem.id %}">{{menuItem.name}}
+                  {% if forloop.first and menuItems|length > 1 %}
+                    <span class=caret></span>
+                  {% endif %}                  
+                </a>
+                                
+                {% endif %}
+        {% if not forloop.first %}
+              </li>
+        {% endif %}
+        {% if menuItems|length > 1 %}
+          {% if forloop.first %}
+            <ul>
+          {% elif forloop.last %}
+            </ul>
+          {% endif %}
+        {% endif %}
+        
+      {% endfor %}
+          </li>
+          

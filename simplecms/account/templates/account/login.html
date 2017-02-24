@@ -1,0 +1,10 @@
+{% extends 'main/main.html' %}
+{% block content %}
+登入
+<form method=post action={% url 'account:login' %}>
+{% csrf_token %}
+<input name=username>
+<input name=password type=password> 
+<input type=submit value=登入>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'main/main.html' %}
+{% block contentName %}個人資料修改{% endblock %}
+
+{% block content %}
+
+
+{% if userForm %}
+
+    <form method=post action={% url 'account:userProfileUpdate' %}>
+    {% csrf_token %}
+
+    {% for field in userForm %}
+        <p>{{field.label_tag}} {{field}} <span class=errorCss>{{field.errors}}</span></p>
+    {% endfor %}
+
+    {% for field in passwordForm %}
+        <p>{{field.label_tag}} {{field}} <span class=errorCss>{{field.errors}}</span></p>
+    {% endfor %}
+
+        <input type=submit value=修改>
+
+    </form>
+{% endif %}
+
+{% endblock %}

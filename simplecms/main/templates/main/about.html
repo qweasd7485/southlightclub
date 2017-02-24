@@ -1,0 +1,96 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>
+  <title>關於南光社 | 南光扶輪社</title>
+  
+  
+  <meta charset=utf-8>
+  <meta name=viewport content=width=device-width,initial-scale=1>
+  <link rel=stylesheet href="{% static 'main/css/normalize.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/main.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/menu.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/rwd.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/table.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/button.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/bootstrap.css' %}">
+  <link rel=sytlesheet href="{% static 'main/css/bootstrap-theme.css' %}">
+  
+  <link rel=stylesheet href="{% static 'main/css/showpage.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body id="body">
+
+ <div id=wrapper>
+
+  <div id = "main">
+    <header>
+      <div id=headerLeftDiv class=floatLeft>
+        <img id=logo class=xs-hide src="{% static 'main/img/logo.png' %}">
+        <a id="headerH1" href="{% url 'main:main' %}" class=xs-hide>南光扶輪社</a>        
+      
+    
+        <nav id=navTop class="floatLeft">
+          {% if menuTop or menuLeft or menuBottom %}
+            {% include 'main/menuTop.html' %}
+            {% include 'main/menuTopXs.html' %}
+          {% else %}
+            <p class=left>一個簡約但效能極高的內容管理系統</p>
+          {% endif %}
+        </nav> 
+    
+      </div> <!-- headerLeftDiv end -->
+      
+      <div class="headerMsg">
+       ～扶輪之南極光～
+      </div>
+    </header>
+  
+  <div id=container>    
+  
+  <!-- <nav id=navLeft class="floatLeft xs-hide">
+      {% if menuTop or menuLeft or menuBottom %}
+        {% include 'main/menuLeft.html' %}
+      {% else %}
+        <h1 class=center>首頁</h1>
+        <p class=center style="padding-bottom:200px;">首頁</p>
+      {% endif %}
+    </nav> -->  
+  
+    <div id=content>
+    
+      {% block content %}
+        <h1>關於南光社</h1>
+      {% endblock %}     
+
+    </div> <!-- content -->
+  
+        
+ <!--<nav id=navBottom class=xs-hide>
+      {% if menuTop or menuLeft or menuBottom %}
+        {% include 'main/menuBottom.html' %}
+      {% else %}
+        <p class=center>技術提供：朝陽科技大學資訊服務中心</p>
+      {% endif %}
+    </nav>      -->   
+     <footer>
+       <div style="clear: both"></div>
+       <div id="footer"></div>
+     </footer>
+  
+    </div>  <!-- container -->
+  </div><!-- main -->
+</div>  <!-- wrapper -->
+
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script>
+<script src="{% static 'main/js/bootstrap.js' %}"></script>
+<script src="{% static 'main/js/bootstrap-extras.js' %}"></script>
+<script src="{% static 'main/js/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'main/js/tinymceInit.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+{% block script %}{% endblock %}
+
+
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+{% extends "admin/admin.html" %}
+
+{% block content %}
+
+{% if pageForm %}
+<h2>新增{{pageType}}</h2>
+
+<form method=post action="{% url 'admin:pageCreate' %}">
+  {% csrf_token %}  
+  
+  <fieldset class=editArea>
+    <p>{{pageForm.name.label}}: {{pageForm.name}}<span class=errorMsg>{{pageForm.name.errors}}</span></p>
+    {{pageForm.pageType}}
+    {% if pageType == PAGE %}
+    <p>{{pageForm.content.label}}: {{pageForm.content}}<span class=errorMsg>{{pageForm.content.errors}}</span></p>
+    {% endif %}
+    {% if pageType == APP %}
+      <p>{{pageForm.appPath.label}}: {{pageForm.appPath}}<span class=errorMsg>{{pageForm.appPath.errors}}</span></p>
+    {% endif %} 
+    <p>{{pageForm.showTop.label}}: {{pageForm.showTop}}</p>
+    <p>{{pageForm.showLeft.label}}: {{pageForm.showLeft}}</p>
+    <p>{{pageForm.showBottom.label}}: {{pageForm.showBottom}}</p>
+    
+    {% for field in pageForm.hidden_fields %}
+      {{field}}
+    {% endfor %}
+  </fieldset>
+  <input type=submit value=儲存>
+</form>
+{% endif %}
+
+{% if itemForm %}
+新增 {{page.name}} 項目<br>
+<form method=post action="{% url 'admin:itemCreate' page.id %}">
+  {% csrf_token %}
+  
+  {% for field in itemForm  %}
+    <p>{{ field.label }}: {{field}} <span class=errorMsg>{{field.errors}}</span></p>
+  {% endfor %}
+  
+  <input type=submit value=儲存>
+</form>
+{% endif %}
+
+<input id=selectFile type=file accept="image/*">
+{% endblock %}

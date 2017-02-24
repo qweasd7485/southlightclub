@@ -1,0 +1,10 @@
+.btn {
+  color: black;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 10px;
+  text-decoration: none;
+  border: 1px solid #7b7b7b;
+  cursor: pointer;
+  background: linear-gradient(#f5f5f5, #dedede);
+}

@@ -1,0 +1,14 @@
+{% extends 'main/main.html' %}
+{% block content %}
+<form method=post action="{% url 'account:accountUpdate' %}">
+  {% csrf_token %}
+    
+  {% for field in passwordForm %}
+    <p>{{field.label_tag}} {{field}} <span class=errorCss>{{field.errors}}</span></p>
+  {% endfor %}
+      
+  <input class="btn floatLeft marginRight10" type=submit value=修改>
+</form>
+<a class="btn floatLeft" href="{% url 'admin:admin' %}">放棄</a>
+<br>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "admin/admin.html" %}
+
+{% block content %}
+
+{% if page %}
+<h2>修改 "{{page.name}}" 頁面</h2>
+<form method=post action="{% url 'admin:pageUpdate' page.id %}">
+  {% csrf_token %}
+  
+  <fieldset class=editArea>
+    {% for field in pageForm.visible_fields %}
+      <p>{{ field.label }}: {{field}} <span class=errorMsg>{{field.errors}}</span></p>
+    {% endfor %}
+    {% for field in pageForm.hidden_fields %}
+      {{field}}
+    {% endfor %}
+  </fieldset>
+  <br>
+  <input class=floatLeftWithMargin type=submit value=儲存>
+</form>
+<form method=get action="{% url 'admin:pageDelete' page.id %}">
+<input class=floatLeftWithMargin type=submit value=刪除>
+</form>
+{% endif %}
+
+
+{% if item %}
+<h2>修改 {{item.name}} 項目清單</h2>
+<form method=post action="{% url 'admin:itemUpdate' item.id %}">
+  {% csrf_token %}
+  
+  <fieldset class=editArea>
+  {% for field in itemForm  %}
+    <p class=tableRow>{{ field.label }}: {{field}} <span class=errorMsg>{{field.errors}}</span></p>
+  {% endfor %}
+  </fieldset>
+  
+  <input class=floatLeftWithMargin type=submit value=儲存>
+</form>
+<form method=get action="{% url 'admin:itemDelete' item.id %}">
+<input class=floatLeftWithMargin type=submit value=刪除>
+</form>
+{% endif %}    
+
+<input id=selectFile type=file accept="image/*">
+{% endblock %}

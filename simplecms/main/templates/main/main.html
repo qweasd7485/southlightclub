@@ -1,0 +1,243 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>                                                     <!-- 判斷回傳是否有無page.content -->
+                                                           <!-- 沒有及設為首頁title --><!-- 有設為該page title --> 
+  <title>                                                   
+     {% if menuTop or menuLeft or menuBottom %}                 
+       {% if not page.pageType or page.pageType == PAGE %}  
+         {% if page.content is None %}                       
+           首頁 | 南光扶輪社                                    
+         {% else %}                                          
+           {{page.name|safe}} | 南光扶輪社                     
+         {% endif %}                                         
+       {% endif %}
+     {% endif %}
+  </title>
+  
+  
+  <meta charset=utf-8>
+  <meta name=viewport content=width=device-width,initial-scale=1>
+  <link rel=stylesheet href="{% static 'main/css/normalize.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/main.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/menu.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/rwd.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/table.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/button.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/bootstrap.css' %}">
+  <link rel=sytlesheet href="{% static 'main/css/bootstrap-theme.css' %}">
+  
+  <link rel=stylesheet href="{% static 'main/css/showpage.css' %}">
+  {% block css %}{% endblock %}
+</head>
+<body id="body">
+
+ <div id=wrapper>
+
+  <div id = "main">
+    <header>
+      <div id=headerLeftDiv class=floatLeft>
+        <img id=logo class=xs-hide src="{% static 'main/img/logo.png' %}">
+        <a id="headerH1" href="{% url 'main:main' %}" class=xs-hide>南光扶輪社</a>        
+      
+    
+        <nav id=navTop class="floatLeft">
+          {% if menuTop or menuLeft or menuBottom %}
+            {% include 'main/menuTop.html' %}
+            {% include 'main/menuTopXs.html' %}
+          {% else %}
+            <p class=left>一個簡約但效能極高的內容管理系統</p>
+          {% endif %}
+        </nav> 
+    
+      </div> <!-- headerLeftDiv end -->
+      
+      <!-- FB粉絲專頁讚與分享 (mini button)-->
+      <div id="fblike">
+      <form action="https://www.facebook.com/%E5%8D%97%E5%85%89%E6%89%B6%E8%BC%AA%E7%A4%BE-778710312258036/?fref=ts"> 
+        <input id="linkfb" type="submit" value="FB粉絲頁連結">
+      </form>
+      <div class="fb-like" data-href="https://www.facebook.com/%E5%8D%97%E5%85%89%E6%89%B6%E8%BC%AA%E7%A4%BE-778710312258036/?fref=ts" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+      </div>
+      
+      <div class="headerMsg">
+       ～扶輪之南極光～
+      </div>
+    </header>
+  
+  <div id=container>    
+  
+  <!-- <nav id=navLeft class="floatLeft xs-hide">
+      {% if menuTop or menuLeft or menuBottom %}
+        {% include 'main/menuLeft.html' %}
+      {% else %}
+        <h1 class=center>首頁</h1>
+        <p class=center style="padding-bottom:200px;">首頁</p>
+      {% endif %}
+    </nav> -->  
+  
+    <div id=content>
+    
+      {% block content %}
+        {% if menuTop or menuLeft or menuBottom %}
+          {% if not page.pageType or page.pageType == PAGE %}
+          
+            {% if page.content is None %}    <!-- 以此判定如果回傳page.content沒有內容(沒有內容代表使用者發出首頁需求)，顯示首頁 -->
+              <div id=left> <!-- 左邊部份 -->  <!-- 這是一個不好的判定方式，若admin設定頁面內容為無會掉進這裡 -->
+                <div class="tit_bot">        <!-- 首頁第一篇:現任社長-->
+                  <h1>現任社長</h1>
+                  <div class="text">
+                    <div class="mainBlock">
+                      <p class="cjk" align="center"><u><span>台中南光扶輪社</span></u></p>
+                      <p class="cjk" align="center"><span>一、R.I. 批准：2013年11月27日</span></p>
+                      <p class="cjk" align="center"><span>二、授證日期：2014年12月31日</span></p>
+                      <p class="cjk" align="center"><span>三、輔導社：台中南門扶輪社</span></p>
+                      <p class="cjk" align="center"><span>四、例 會：每星期三 中午12:00-14:00</span></p>
+                      <p class="cjk" align="center"><span>五、例會地點：小春日本懷石料理</span></p>
+                      <p class="cjk" align="center"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;台中市西區精誠路260號</span></p>
+                      <p class="cjk" align="center"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;電話: 04-23109907</span></p>
+                      <p class="cjk" align="center"><span>六、創社社友：33人</span></p>
+                    </div>
+                   <!-- <div class="read">                    
+                      <a href="{% url 'main:about' %}">看更多</a>     
+                    </div></br>-->
+                  </div>
+                </div>
+                
+                <div class="tit_bot">        <!-- 首頁第二篇：社長的話-->
+                  <h1>社長的話</h1>
+                  <div class="text">
+                    <div class="mainBlock">
+                      <h4>社長的話</h4>
+                    </div>
+              <!--  <div class="read">
+                      <a href="">看更多</a>
+                    </div></br>  -->    
+                  </div>
+                </div>
+                
+                <div class="tit_bot">        <!-- 首頁第三篇：16-17目標/slogan -->
+                  <h1>16-17目標/slogan</h1>
+                  <div class="text">
+                    <div class="mainBlock">
+                      <p>16-17目標/slogan</p>
+                    </div>
+                   <!--  <div class="read">
+                      <a href="">看更多</a>
+                    </div></br>  -->  
+                  </div>
+                </div>
+              </div>
+              
+              <div id="right">    <!-- 右邊部份 -->
+                <h1>當週例會預告</h1>
+                <div class="right_b">
+                  <div class="text">
+                    <div class="mainBlock">
+                      <p>日期：2017/02/22(三)</p>
+                      <p>時間：中午12:00-14:00</p>
+                      <p>例會地點：小春日本懷石料理</p>
+                    </div>
+                  </div>
+                </div>
+              </div>              
+              
+            {% else %}                     
+              <h1 class="pageTitle">     <!-- show page部份 -->
+              {{page.name|safe}}         <!-- page title(cms中form為"name") -->
+              </h1>
+              
+              <div class="pageContent">  <!-- page content -->
+              {{page.content|safe}}
+              </div>
+              
+            {% endif %}        
+            
+              
+          {% elif page.pageType == LIST %}
+            <table class="table table-striped table-hover">
+              <tr><th>標題</th><th>內容</th><th>建立時間</th></tr>
+              {% for listItem in listItems %}
+                <tr>
+                  <td><a href="{% url 'showItem:main' listItem.id %}">{{listItem.name}}</a></td>
+                  <td>{{listItem.content | truncatewords_html:30 | safe}} ...</td>
+                  <td>{{listItem.createTime | date:"Y-m-d"}}</td>
+                </tr>
+              {% endfor %}
+            </table>           
+          {% endif %}
+        {% else %}
+          <h1 style=padding-top:50px;>恭喜！</h1>
+          <p>歡迎來到您的網站</p>
+        {% endif %}
+      {% endblock %}     
+
+    </div> <!-- content -->
+  
+        
+ <!--<nav id=navBottom class=xs-hide>
+      {% if menuTop or menuLeft or menuBottom %}
+        {% include 'main/menuBottom.html' %}
+      {% else %}
+        <p class=center>技術提供：朝陽科技大學資訊服務中心</p>
+      {% endif %}
+    </nav>      -->   
+     <footer>
+       <div style="clear: both"></div>
+       <div id="footer"></div>
+     </footer>
+  
+    </div>  <!-- container -->
+  </div><!-- main -->
+</div>  <!-- wrapper -->
+
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script>
+<script src="{% static 'main/js/bootstrap.js' %}"></script>
+<script src="{% static 'main/js/bootstrap-extras.js' %}"></script>
+<script src="{% static 'main/js/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'main/js/tinymceInit.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+{% block script %}{% endblock %}
+
+<script>
+  /* 匯入 FB 基本版*/
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '384711305236085',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  
+  /* 粉絲頁按讚與分享迷你按鈕 */
+  (function(d, s, id) {   
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=384711305236085";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  
+  /* 粉絲頁按讚與分享 */
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=1401939746786232";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+</body>
+</html>
+

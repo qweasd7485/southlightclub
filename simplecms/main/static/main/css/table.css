@@ -1,0 +1,20 @@
+.table {
+  width: 100%;
+}
+
+.table th {
+  padding: 10px 0 10px 5px;
+  text-align: left;
+  background: linear-gradient(#E0F2F7, #A9E2F3);
+  border-bottom: 2px solid gray;
+}
+
+.table td {
+  padding: 10px 0 10px 10px;
+}
+
+.table-striped tr:nth-child(even) {
+  background-color: #EFF8FB;
+}
+
+

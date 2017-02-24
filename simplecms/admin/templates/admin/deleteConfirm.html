@@ -1,0 +1,33 @@
+{% extends "admin/admin.html" %}
+
+
+{% block content %}
+<h2>你確定嗎？</h2>
+
+{% if page %}
+<br><h4>你確定想要刪除頁面「<a href="{% url 'admin:pageDetail' page.id %}">{{page.name}}</a>」？ 與它相關的所有項目都會被刪除！</h4>
+{% else %}
+<br><h4>你確定想要刪除清單項目「<a href="{% url 'admin:itemDetail' item.id %}">{{item.name}}</a>」？ 與它相關的所有項目都會被刪除！</h4>
+{% endif %}
+
+{% for childPage in childPages %}
+<p>頁面：{{page.name}}/<a href="{% url 'admin:pageDetail' childPage.id %}">{{childPage.name}}</a></p>
+{% endfor %}
+
+{% for childItem in childItems %}
+<p>項目：{{page.name}}/<a href="{% url 'admin:itemDetail' childItem.id %}">{{childItem.name}}</a></p>
+{% endfor %}
+
+<br><br>
+
+{% if page %}
+<form method=post action="{% url 'admin:pageDelete' page.id %}">
+{% else %}
+<form method=post action="{% url 'admin:itemDelete' item.id %}">
+{% endif %}
+
+  {% csrf_token %}
+  <input type="submit" value="是的，我確定">
+</form>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+.pageTitle{
+  text-align:center;
+  background:linear-gradient(#c7cfd2,#ffffff);
+  padding:20px 0 30px 0;
+  border-radius:20px;
+  width: 100%;
+}
+
+.pageContent{
+  width:70%;
+}

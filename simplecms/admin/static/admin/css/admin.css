@@ -1,0 +1,142 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #eee;
+  font-size: 0.9em;
+  font-weight: bold;
+  line-height: 1em;
+  background: #333;
+}
+
+#adminTitle {
+  cursor: pointer;
+  float: left;
+  background: #555;
+  font-weight: bold;
+  width: 115px;
+  padding: 13px 17px;
+  font-size: 12px !important;
+  border-left: 1px solid #404040;
+  border-right: 1px solid #262626;
+}
+
+#adminTitle a {
+  color: #eee !important;
+  display: block;
+}
+
+#adminLogo {
+  color: #309bbf;
+  text-shadow: 1px 1px 0 #aaaaaa;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+#tools {
+  float:right;
+  margin: 5px 10px 5px 2px;
+}
+
+#tools li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 10px;
+  border-right: 1px solid #262626;
+}
+
+#tools li:last-child {
+    border-right: none;
+}
+
+a:link, a:visited {
+  color: #309bbf;
+  text-decoration: none;
+}
+
+#menu {
+  background-color: #3f3f3f;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  border-right: 1px solid #222;
+  height: -webkit-calc(100% - 44px);
+  height: calc(100% - 44px);
+  margin-top: 44px;
+  width: 150px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#menu li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+#content {
+  margin: 60px 10px 60px 160px;
+}
+
+.contentPage .item {
+  vertical-align:middle;
+  line-height: 1em;
+  border: 1px solid #ddd;
+  padding: 7px;
+  border-top-color: #eee;
+  border-bottom-color: #ccc;
+  margin: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#e6e6e6));
+}
+
+#selectFile {
+  display: none;
+}
+
+.pageTools {
+  float: right;
+}
+
+.contentPage {
+  width: 50%;
+}
+
+.contentPage li {
+  list-style-type: none;
+}
+
+.contentPage .item img {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.editArea {
+  background: #eee;
+  moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.editArea p {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.errorMsg {
+  color: red;
+}
+
+img.left, img.right {
+  width: 10px;
+}
+
+img.up, img.down, img.deleteTool {
+  height: 10px;
+}
+
+.floatLeftWithMargin {
+  float: left;
+  margin-right: 10px;
+}
