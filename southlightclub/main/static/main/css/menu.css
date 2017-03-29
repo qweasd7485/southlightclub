@@ -1,0 +1,77 @@
+ul.nav li {               /* All <li>: no list style  */
+  list-style: none;
+}
+
+
+
+ul.horizontal > li {      /* Main menu <li>: display inline-block */
+  display: inline-block;  
+}
+
+ul.horizontal li > li {   /* Submenu <li>: display block */
+  display: block;
+}
+
+ul.vertical {             /* Vertical menu width 100%*/
+  width: 100%;
+}
+
+ul.vertical > li {        /* Vertical main menu <li>  width 100% */
+  width: 100%;
+}
+
+ul.nav a {                /* All menu's <a> style */
+  width: 120px;
+  padding: 6px 5px 5px 5px !important;
+  font-size: 15px;  
+/*  background: #5e6c7d;*/
+  border-radius:5px; 
+}
+
+.nav > li > a{  /* Mainmenu <a> style */
+  color: #5e6c7d !important;
+  margin-top: 10px;
+}
+
+ul.nav li ul a {            /* Submenu <a> style */
+  padding: 5px 0 5px 0;
+  margin-left: 10px;
+  color: #5e6c7d !important;
+}
+
+ul.nav li.hasSubMenu ul li{ /* Submunu <li> 每個li間距 */  
+  margin-top:10px;
+  width:100%;
+  text-align:left;  
+}
+
+ul.nav li.hasSubMenu ul {    /* Hide all submenu */
+  display: none;
+}
+
+ul.nav a:hover {             /* All <a> hover style */  
+  /* background: linear-gradient(#f6f6f6, #d0d0d0); */
+}
+
+.caret {                     /* <a> with submenu: add caret */
+  position: absolute;
+  border: 5px solid transparent;
+  border-top: 5px solid #4e5800;
+}
+
+ul.hover li.hasSubMenu:hover > ul {   /* <li> with submenu: hover show submenu */
+  display: block;
+}
+
+ul.horizontal li.hasSubMenu:hover > ul {   /* Horizontal <li> hovering: take absolut position to cover other text */
+  position: absolute;
+}
+
+/* xs-show menu */
+ul.xs-show {
+  width: 92%;
+  display: none;
+  float: right;
+  margin-top: -36px;    /* Such that it is as high as the pull button */
+  /* border: 1px solid green; */
+}

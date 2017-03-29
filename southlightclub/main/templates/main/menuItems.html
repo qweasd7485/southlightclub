@@ -1,0 +1,27 @@
+      {% for menuItem in menuItems %}
+      
+        {% if forloop.first %}
+          <li class="hasSubMenu">
+        {% else %}
+              <li>              
+        {% endif %}        
+               
+                <a href="{% url 'showPage:main' menuItem.id %}">{{menuItem.name}}
+                  {% if forloop.first and menuItems|length > 1 %}
+                    <em class="indicator1"></em>
+                  {% endif %}
+                </a>
+                
+        {% if not forloop.first %}
+              </li>
+        {% endif %}
+        {% if menuItems|length > 1 %}
+          {% if forloop.first %}
+            <ul>
+          {% elif forloop.last %}
+            </ul>
+          {% endif %}
+        {% endif %}
+        
+      {% endfor %}
+          </li>
