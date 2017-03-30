@@ -23,10 +23,18 @@ def admin(request):
 @login_required
 def page(request):
     pages = Page.objects.all()
-    presidentIntro = get_object_or_404(MainItem, id=1)              #分別資料庫去取得首頁項目，方便以活的方式放入admin管理
-    words = get_object_or_404(MainItem, id=2)
-    target = get_object_or_404(MainItem, id=3)
-    regularMeeting = get_object_or_404(MainItem, id=4)
+    presidentIntro = MainItem.objects.filter(id=1)     #取出資料庫首頁內容第一個(現任社長)
+    words = MainItem.objects.filter(id=2)              #取出資料庫首頁內容第二個(社長的話)
+    target = MainItem.objects.filter(id=3)             #取出資料庫首頁內容第三個(16-17目標/slogan)
+    regular = MainItem.objects.filter(id=4)            #取出資料庫首頁內容第四個(當週例會預告)
+    if presidentIntro:                               #filter取出來會是一個list   所以判斷他有存在時，它就是list中的第一筆
+        presidentIntro = presidentIntro[0]
+    if words:
+        words = words[0]
+    if target:
+        target = target[0]
+    if regular: 
+        regular = regular[0] 
     menus, subMenu = [], []   
     for page in list(pages):
         if page.subMenuOrder == 0:    # Main menu
@@ -36,7 +44,7 @@ def page(request):
         subMenu.append(page)
     menus.append(subMenu)
     
-    return render(request, 'admin/page.html', {'menus':menus, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regularMeeting':regularMeeting})
+    return render(request, 'admin/page.html', {'menus':menus, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regular':regular})
 
 
 @login_required

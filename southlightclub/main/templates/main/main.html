@@ -61,35 +61,26 @@
       {% if page.content is None%} <!-- 以此判定如果回傳page.content沒有內容(沒有內容代表使用者發出首頁需求)，顯示首頁 -->
         <section class="row_1" > 
           <div class="container">
-             <article class="row">
+             <article class="row">             
                <ul class="list1">
+               {% for mainItem in mainItems %}
                  <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
                    <div class="list1overflow">
-                     <p class="listtitle1">{{ presidentIntro.name }}</p>
+                     <p class="listtitle1">{{ mainItem.name }}</p>
                    </div>
                    <div style="max-height:100px; overflow:hidden;">
-                   {{ presidentIntro.content | safe }}
+                   {{ mainItem.content | safe }}
                    </div>
-                   <a href="{% url 'main:president' %}" class="btn btn-primary btn1">Details</a>
+                   {% if mainItem.id == 1 %}  
+                     <a href="{% url 'main:president' %}" class="btn btn-primary btn1">Details</a>
+                   {% elif mainItem.id == 2%}
+                     <a href="{% url 'main:words' %}" class="btn btn-primary btn1">Details</a>
+                   {% elif mainItem.id == 3%}
+                     <a href="{% url 'main:target' %}" class="btn btn-primary btn1">Details</a>
+                   {% endif%}
+                 
                  </li>
-                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
-                   <div class="list1overflow">                            
-                     <p class="listtitle1">{{ words.name }}</p>
-                   </div>
-                   <div style="max-height:100px; overflow:hidden;">
-                   {{ words.content | safe }}
-                   </div>
-                   <a href="{% url 'main:words' %}" class="btn btn-primary btn1">Details</a>
-                 </li>
-                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
-                   <div class="list1overflow">                            
-                     <p class="listtitle1">{{ target.name }}</p>
-                   </div>
-                   <div style="max-height:100px; overflow:hidden;">
-                   {{ target.content | safe}}
-                   </div>
-                   <a href="{% url 'main:target' %}" class="btn btn-primary btn1">Details</a>
-                 </li>
+               {% endfor %}                 
                </ul>
              </article>
            </div>
@@ -99,8 +90,8 @@
         <div class="container">
             <div class="row">
               <article class="col-lg-5 col-md-4 col-sm-4 col-xs-12 collrow2">
-                <p class="title2">{{ regularMeeting.name }}</p>
-                {{ regularMeeting.content | safe }}  
+                <p class="title2">{{ regular.name }}</p>
+                {{ regular.content | safe }}  
               </article>
             </div>
          </div>
@@ -133,27 +124,24 @@
           <div class="container">
              <article class="row">
                <ul class="list1">
+                 {% for mainItem in mainItems %}
                  <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
                    <div class="list1overflow">
-                     <p class="listtitle1">{{ presidentIntro.name }}</p>
+                     <p class="listtitle1">{{ mainItem.name }}</p>
                    </div>
-                   {{ presidentIntro.content | safe }}
-                   <a href="{% url 'main:president' %}" class="btn btn-primary btn1">Details</a>
-                 </li>
-                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
-                   <div class="list1overflow">                            
-                     <p class="listtitle1">{{ words.name }}</p>
+                   <div style="max-height:100px; overflow:hidden;">
+                   {{ mainItem.content | safe }}
                    </div>
-                   {{ words.content | safe }}
-                   <a href="{% url 'main:words' %}" class="btn btn-primary btn1">Details</a>
+                   {% if mainItem.id == 1 %}  
+                     <a href="{% url 'main:president' %}" class="btn btn-primary btn1">Details</a>
+                   {% elif mainItem.id == 2%}
+                     <a href="{% url 'main:words' %}" class="btn btn-primary btn1">Details</a>
+                   {% elif mainItem.id == 3%}
+                     <a href="{% url 'main:target' %}" class="btn btn-primary btn1">Details</a>
+                   {% endif%}
+                 
                  </li>
-                 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-12 collist1">
-                   <div class="list1overflow">                            
-                     <p class="listtitle1">{{ target.name }}</p>
-                   </div>
-                   {{ target.content | safe}}
-                   <a href="{% url 'main:target' %}" class="btn btn-primary btn1">Details</a>
-                 </li>
+               {% endfor %}
                </ul>
              </article>
            </div>
@@ -163,8 +151,8 @@
         <div class="container">
             <div class="row">
               <article class="col-lg-5 col-md-4 col-sm-4 col-xs-12 collrow2">
-                <p class="title2">{{ regularMeeting.name }}</p>
-                {{ regularMeeting.content | safe }}  
+                <p class="title2">{{ regular.name }}</p>
+                {{ regular.content | safe }}  
               </article>
             </div>
          </div>

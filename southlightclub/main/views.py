@@ -6,11 +6,11 @@ from main.models import Page, ListItem, MainItem
 
 def main(request, pageId=''):
     menuTop, menuLeft, menuBottom = makeMenus()
-    presidentIntro = get_object_or_404(MainItem, id=1)
-    words = get_object_or_404(MainItem, id=2)
-    target = get_object_or_404(MainItem, id=3)
-    regularMeeting = get_object_or_404(MainItem, id=4)    
-    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regularMeeting':regularMeeting}
+    mainItems = MainItem.objects.exclude(id__in=[4])   #取出資料庫首頁內容前三個(現任社長、社長的話、16-17目標/slogan)
+    regular = MainItem.objects.filter(id=4)            #取出資料庫首頁內容第四個(當週例會預告)
+    if regular:#filter取出來會是一個list   所以判斷他有存在時，它就是list中的第一筆
+        regular = regular[0] 
+    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'mainItems':mainItems, 'regular':regular}
     if not pageId:
         return render(request, 'main/main.html', context)    
     path = request.get_full_path()
