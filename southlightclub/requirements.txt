@@ -1,3 +1,3 @@
-django==1.9.8
+django
 django-toolbelt
 boto3
