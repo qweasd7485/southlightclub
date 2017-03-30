@@ -7,7 +7,7 @@ from main.constants import LIST, PAGE
 
 def populate():
     print('Populating... ', end='')
-    menus = [['產品', '產品1', '產品2'], ['最新消息'], ['活動花絮', '活動花絮1', '活動花絮2', '活動花絮3', '活動花絮4', '活動花絮5', '活動花絮6'],
+    menus = [['關於南光', '緣由', '大事紀', '年度工作計畫'], ['例會期刊'], ['活動花絮', '活動花絮1', '活動花絮2', '活動花絮3', '活動花絮4', '活動花絮5', '活動花絮6'],
              ['公司簡介'], ['聯絡我們', '聯絡我們1', '聯絡我們2']]
     User.objects.all().delete()
     User.objects.create_superuser(username='admin', password='admin', email=None)
