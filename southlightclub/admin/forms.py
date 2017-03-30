@@ -1,6 +1,6 @@
 from django import forms
 
-from main.models import Page, ListItem
+from main.models import Page, ListItem, MainItem
 from main.constants import PAGE, LIST, APP
 from django.forms.widgets import HiddenInput
 
@@ -33,4 +33,11 @@ class ItemForm(forms.ModelForm):
         fields = ('name', 'content')
     
     
+class MainItemForm(forms.ModelForm):
+    name = forms.CharField(label='標題')
+    content = forms.CharField(label='內容', widget=forms.Textarea())
     
+    class Meta:
+        model = MainItem
+        fields = ('name', 'content')
+        

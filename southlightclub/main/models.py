@@ -35,5 +35,16 @@ class ListItem(models.Model):
     def __str__(self):
         return self.name
     
+class MainItem(models.Model):                #儲存首頁內容(現任社長、社長的話、目標/slogan與當週例會預告)
+    name = models.CharField(max_length=128)
+    content = models.TextField()
+    createTime = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['createTime']
+    
+    def __str__(self):
+        return self.name
+    
     
     

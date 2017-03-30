@@ -1,0 +1,64 @@
+{% extends 'main/mainbase.html' %}
+{% load staticfiles %}
+
+{% block title %}
+  {{target.name|safe}} | 南光扶輪社 
+{% endblock %}
+
+{% block css %}{% endblock %}
+
+<!--==============================header=================================-->
+{% block header %}
+    <div class="parallax-window" style="color:white" data-parallax="scroll" data-image-src="{% static 'main/img/headerbanner.png' %}">
+    <section class="bgmainhead">
+      <article class="slogan">
+        <p>~扶輪之南極光~</p><!-- AR PL UKai TW -->
+        <div id="fblike" >
+        <form action="https://www.facebook.com/%E5%8D%97%E5%85%89%E6%89%B6%E8%BC%AA%E7%A4%BE-778710312258036/?fref=ts"> 
+          <input id="linkfb" type="submit" value="FB粉絲頁連結">
+        </form>
+      </article>
+    </section>
+  </div>
+      <div id="stuck_container" class="menu-bg">
+        <div class="container">
+            <div class="row ">   
+                  <article class="col-lg-4 col-sm-4 col-xs-12">                     
+                      <img id=logo width="20%" height="70%" class=xs-hide src="{% static 'main/img/logo.png' %}">
+                      <a id="headerH1" style="color:white; " href="{% url 'main:main' %}" class=xs-hide>南&nbsp光&nbsp扶&nbsp輪&nbsp社</a>    
+                  </article> 
+                  <article class="col-lg-8 col-sm-8 col-xs-12">   
+                      <div class="menuheader">
+                        <nav class="navbar navbar-default navbar-static-top my_navbar" role="navigation">
+                           {% if menuTop or menuLeft or menuBottom %}
+                             {% include 'main/menuTop.html' %}                             
+                           {%else%}
+                             <p class=left>一個簡約但效能極高的內容管理系統</p>
+                           {% endif%}
+                        </nav>
+                      </div>
+                  </article>
+            </div>
+        </div>        
+    </div>
+{% endblock %}
+
+
+<!--==============================content=================================-->
+<div id="content">
+  {% block content %}
+    <!--==============================row_1=================================-->       
+        <section class="row_1" > 
+          <div class="container">
+             <article class="row">               
+                   <div class="list1overflow">
+                     <p class="listtitle1">{{ target.name }}</p>
+                   </div>
+                   <p class="mbotlist1">{{ target.content | safe }}</p>                 
+             </article>
+           </div>
+         </section>  
+  {% endblock %}
+  
+{% block footer %}{% endblock %}
+{% block script %}{% endblock %}

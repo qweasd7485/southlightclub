@@ -26,6 +26,8 @@ SECRET_KEY = '4#&#0xmexrfe010e+c=lz8q^_of=ap)k=s2@-i8ku=d_oaci4)'
 DEBUG = True
 if 'DYNO' in os.environ:  # Running on Heroku
     DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

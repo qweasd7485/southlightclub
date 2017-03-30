@@ -1,1 +1,1 @@
-web: gunicorn simplecms.wsgi --log-file -
+web: gunicorn southlightclub.wsgi --log-file -

@@ -1,0 +1,73 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+<head>                                                     <!-- 判斷回傳是否有無page.content -->
+                                                           <!-- 沒有及設為首頁title --><!-- 有設為該page title --> 
+  <title>
+  {% block title %}{% endblock %}
+  </title>
+   
+  <meta charset=utf-8>
+  <meta name=viewport content=width=device-width,initial-scale=1>
+  <link rel=stylesheet href="{% static 'main/css/bootstrap.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/style.css' %}">
+  <link rel=stylesheet href="{% static 'main/fonts/font-awesome.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/owl.carousel.css' %}">
+  <link rel=stylesheet href="{% static 'main/css/jquery.fancybox.css' %}">
+  
+  <link rel=stylesheet href="{% static 'main/css/showpage.css' %}">
+  {% block css %}{% endblock %}
+</head>
+
+<body>
+<!--==============================header=================================-->
+<header id = "header">
+  {% block header %}{% endblock %}    
+</header>
+
+<!--==============================content=================================-->
+<div id="content">
+  {% block content %}{% endblock %}
+</div>
+  
+  
+
+<footer>    
+    <div class="footerrow1">
+        <div class="container">
+            <div class="row">
+                <article class="col-lg-12">
+                    <p class="footerpriv"><a href="index.html">metamorph_slacal</a> <span>&copy;</span> <span id="copyright-year"></span></p>
+<div id="foo_div">Website Design: <a href="http://www.metamorphozis.com" class="foo_link">metamorphozis</a></div>
+                </article>
+            </div>
+        </div>
+    </div>
+    {% block footer %}{% endblock %}
+</footer>
+ 
+
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script>
+<script src="{% static 'main/js/jquery.js' %}"></script>
+<script src="{% static 'main/js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'main/js/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'main/js/tinymceInit.js' %}"></script>
+<script src="{% static 'main/js/superfish.js' %}"></script>
+<script src="{% static 'main/js/jquery.mobilemenu.js' %}"></script>
+<script src="{% static 'main/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'main/js/jquery.ui.totop.js' %}"></script>
+<script src="{% static 'main/js/jquery.touchSwipe.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.equalheights.js' %}"></script>
+<script src="{% static 'main/js/owl.carousel.js' %}"></script>
+<script src="{% static 'main/js/jquery.fancybox.pack.js' %}"></script>
+<script src="{% static 'main/js/sForm.js' %}"></script>
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'main/js/scripts.js' %}"></script> 
+<script src="{% static 'main/js/parallax.min.js' %}"></script>
+<script src="{% static 'main/js/menu.js' %}"></script>
+
+
+{% block script %}{% endblock %}
+</body>
+</html>
+

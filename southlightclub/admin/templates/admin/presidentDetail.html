@@ -1,0 +1,15 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+
+<h2>現任社長管理</h2>
+<form method=post action={% url 'admin:presidentDetail' %} novalidate>
+  {% csrf_token %}
+  
+  <fieldset class=editArea>
+  {% for field in mainItemForm %}
+    <p class=tableRow>{{ field.label }}: {{field}}<span class=errorMsg>{{field.errors}}</span></p>
+  {% endfor %}
+  </fieldset>
+  <input class=floatLeftWithMargin type=submit value=儲存>
+</form>
+{% endblock %}

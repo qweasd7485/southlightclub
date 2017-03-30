@@ -1,12 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from main.constants import LIST, APP
-from main.models import Page, ListItem
+from main.models import Page, ListItem, MainItem
 
 
 def main(request, pageId=''):
     menuTop, menuLeft, menuBottom = makeMenus()
-    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom}
+    presidentIntro = get_object_or_404(MainItem, id=6)
+    words = get_object_or_404(MainItem, id=2)
+    target = get_object_or_404(MainItem, id=3)
+    regularMeeting = get_object_or_404(MainItem, id=7)    
+    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regularMeeting':regularMeeting}
     if not pageId:
         return render(request, 'main/main.html', context)    
     path = request.get_full_path()
@@ -53,3 +57,27 @@ def about(request):
     menuTop, menuLeft, menuBottom = makeMenus()
     context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom}
     return render(request, 'main/about.html', context)
+
+def president(request):
+    menuTop, menuLeft, menuBottom = makeMenus()
+    presidentIntro = get_object_or_404(MainItem, id=6)
+    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'presidentIntro':presidentIntro}
+    return render(request, 'main/president.html',context)
+
+def words(request):
+    menuTop, menuLeft, menuBottom = makeMenus()
+    words = get_object_or_404(MainItem, id=2)
+    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'words':words}
+    return render(request, 'main/words.html', context)
+
+def target(request):
+    menuTop, menuLeft, menuBottom = makeMenus()
+    target = get_object_or_404(MainItem, id=3)
+    context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'target':target}
+    return render(request, 'main/target.html', context)
+
+    
+    
+    
+    
+    

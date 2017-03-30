@@ -9,9 +9,9 @@ from django.forms.utils import ErrorList
 from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
-from admin.forms import PageForm, ItemForm
+from admin.forms import PageForm, ItemForm, MainItemForm
 from main.constants import PAGE, LIST, APP
-from main.models import Page, ListItem
+from main.models import Page, ListItem, MainItem
 from southlightclub.settings import AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_BUCKET_NAME, AWS_URL
 
 
@@ -23,11 +23,11 @@ def admin(request):
 @login_required
 def page(request):
     pages = Page.objects.all()
-    menus, subMenu = [], []
-    thirdMenu = []
-    for page in list(pages):
-        if page.thirdMenuOrder >= 1:
-            thirdMenu.append(page)
+    presidentIntro = get_object_or_404(MainItem, id=6)              #分別資料庫去取得首頁項目，方便以活的方式放入admin管理
+    words = get_object_or_404(MainItem, id=2)
+    target = get_object_or_404(MainItem, id=3)
+    regularMeeting = get_object_or_404(MainItem, id=7)
+    menus, subMenu = [], []   
     for page in list(pages):
         if page.subMenuOrder == 0:    # Main menu
             if subMenu:
@@ -36,7 +36,7 @@ def page(request):
         subMenu.append(page)
     menus.append(subMenu)
     
-    return render(request, 'admin/page.html', {'menus':menus, 'thirdMenu':thirdMenu})
+    return render(request, 'admin/page.html', {'menus':menus, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regularMeeting':regularMeeting})
 
 
 @login_required
@@ -200,56 +200,14 @@ def changeOrder(request):
             page = get_object_or_404(Page, id=pageID)
             page.mainMenuOrder = pageMainMenuOrder
             page.subMenuOrder = pageSubMenuOrder   
-            page.thirdMenuOrder = 0             
+                        
                                           
             page.save()
             
         
     return HttpResponse('success')
 
-@login_required
-@transaction.atomic
-def test(request):
-    if request.method=='POST':
-        changeOrders = request.POST.get('changeOrders')
-        changeOrders = changeOrders.split(', ')
-        
-        for changeOrder in changeOrders:
-            if changeOrder=='':
-                continue
-            pageOrder = changeOrder.split('-')
-            pageID = pageOrder[0]
-            page = get_object_or_404(Page, id=pageID)
-            page.thirdMenuOrder = page.thirdMenuOrder +2
-            
-            idpre = int(pageID) - 1
-            idpre = str(idpre)
-            prepage = get_object_or_404(Page, id=idpre)
-            prepage.thirdMenuOrder = prepage.thirdMenuOrder +1
-            page.save()
-            prepage.save();
-        
-    return HttpResponse('success')
 
-def test2(request):
-    if request.method=='POST':
-        changeOrders = request.POST.get('changeOrders')
-        changeOrders = changeOrders.split(', ')
-        
-        for changeOrder in changeOrders:
-            if changeOrder=='':
-                continue
-            pageOrder = changeOrder.split('-')
-            pageID = pageOrder[0]   
-            
-            
-            idpre = int(pageID) - 1
-            idpre = str(idpre)
-            prepage = get_object_or_404(Page, id=idpre)
-            prepage.thirdMenuOrder = prepage.thirdMenuOrder +1            
-            prepage.save();
-        
-    return HttpResponse('success')
 
 def rename(subMenus, mainMenuOrder):
     print(subMenus)
@@ -294,3 +252,67 @@ def upload(request):
     s3 = session.resource('s3')
     s3.Bucket(AWS_BUCKET_NAME).put_object(Key=cloudFilePath, Body=fileToUpload)
     return HttpResponse(AWS_URL + cloudFilePath)
+
+@login_required
+def presidentDetail(request):
+    presidentToUpdate = get_object_or_404(MainItem, id=6)
+    template = 'admin/presidentDetail.html'
+    if request.method=='GET':
+        mainItemForm = MainItemForm(instance=presidentToUpdate)
+        return render(request, template, {'mainItemForm':mainItemForm, 'president':presidentToUpdate})
+    #POST
+    mainItemForm = MainItemForm(request.POST, instance=presidentToUpdate)
+    if not(mainItemForm.is_valid()):
+        return render(request, template, {'mainItemForm':mainItemForm, 'president':presidentToUpdate})
+    
+    mainItemForm.save()
+    messages.success(request, '修改成功！！')
+    return redirect('admin:admin')
+
+@login_required
+def wordsDetail(request):
+    wordsToUpdate = get_object_or_404(MainItem, id=2)
+    template = 'admin/wordsDetail.html'
+    if request.method=='GET':
+        mainItemForm = MainItemForm(instance=wordsToUpdate)
+        return render(request, template, {'mainItemForm':mainItemForm, 'words':wordsToUpdate})
+    #POST
+    mainItemForm = MainItemForm(request.POST, instance=wordsToUpdate)
+    if not(mainItemForm.is_valid()):
+        return render(request, template, {'mainItemForm':mainItemForm, 'words':wordsToUpdate})
+    
+    mainItemForm.save()
+    messages.success(request, '修改成功！！')
+    return redirect('admin:admin')
+   
+@login_required  
+def targetDetail(request):
+    targetToUpdate = get_object_or_404(MainItem, id=3)
+    template='admin/targetDetail.html'
+    if request.method=='GET':
+        mainItemForm = MainItemForm(instance=targetToUpdate)     
+        return render(request, template,{'mainItemForm':mainItemForm, 'target':targetToUpdate})
+    #POST
+    mainItemForm = MainItemForm(request.POST, instance=targetToUpdate)
+    if not(mainItemForm.is_valid()):
+        return render(request, template,{'mainItemForm':mainItemForm, 'target':targetToUpdate})
+    mainItemForm.save()
+    messages.success(request, '修改成功！！')
+    return redirect('admin:admin')
+
+@login_required
+def regularMeetingDetail(request):
+    regularMeetingToUpdate =  get_object_or_404(MainItem, id=7)
+    template='admin/regularMeetingDetail.html'
+    if request.method=='GET':
+        mainItemForm = MainItemForm(instance=regularMeetingToUpdate)     
+        return render(request, template,{'mainItemForm':mainItemForm, 'regularMeeting':regularMeetingToUpdate})
+    #POST
+    mainItemForm = MainItemForm(request.POST, instance=regularMeetingToUpdate)
+    if not(mainItemForm.is_valid()):
+        return render(request, template,{'mainItemForm':mainItemForm, 'regularMeeting':regularMeetingToUpdate})
+    mainItemForm.save()
+    messages.success(request, '修改成功！！')
+    return redirect('admin:admin')
+    
+    

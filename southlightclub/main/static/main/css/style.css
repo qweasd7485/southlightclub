@@ -38,13 +38,15 @@ body {
 /*--------------- row_s ----------------*/
 .row_1 {
 	padding: 49px 0 46px;
+	background-color: #e2f6ea !important;   /*eaf9f0*/
 }
 .row_2 {
 	padding: 49px 0;
-	background: #303030;
+	background: linear-gradient(to bottom, rgba(187,205,195,1)0%, rgba(233,248,239,1)50%,rgba(187,205,195,1)100%);
 }
 .row_3 {
 	padding: 47px 0 47px;
+	background-color: #e2f6ea;
 }
 .row_4 {
 	padding: 35px 0 29px;
@@ -284,6 +286,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', end
 .navbar-brand_a:hover {
 	text-decoration: none;
 }
+
+      /*logo position*/
+img#logo{
+  margin-left: -50px;
+}
 /*-----------------navbar---------------------*/
 hr.headhr {
 	bottom: 50px;
@@ -471,7 +478,7 @@ hr.headhr {
 	box-sizing: border-box;
 }
 .slogan p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: AR PL UKai TW;
 	font-size: 40px;
 	line-height: 90px;
 	font-weight: 300;
@@ -487,6 +494,18 @@ a#headerH1{                     /*logo title*/
 }
 .parallax-window{
 	height:350px;
+}
+#fblike{               /*fb*/  
+}
+
+input#linkfb{
+  color:white;
+  background-color: #4267b2;
+  border:1px solid #4267b2;
+  border-radius:4px;
+  text-decoration:none;
+  font-size:14px;
+  margin-right:10px;
 }
 /************************ header end ***********************/
 /************************** content **************************/
@@ -550,10 +569,10 @@ a#headerH1{                     /*logo title*/
 /*---------------row_2-------------------*/
 .title2 {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 48px;
+	font-size: 36px;
 	line-height: 32px;
 	font-weight: 400;
-	color: #ffffff;
+	color: black;
 }
 /*------------carusel------------*/
 /*--------------list2-------------*/
@@ -1565,6 +1584,7 @@ address p {
 /************************* footer **************************/
 .footerrow1 {
 	padding: 20px 0;
+	background: #4c5752 !important;
 }
 p.footerpriv, #foo_div {
 	position: relative;
