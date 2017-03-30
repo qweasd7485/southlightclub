@@ -6,10 +6,10 @@ from main.models import Page, ListItem, MainItem
 
 def main(request, pageId=''):
     menuTop, menuLeft, menuBottom = makeMenus()
-    presidentIntro = get_object_or_404(MainItem, id=6)
+    presidentIntro = get_object_or_404(MainItem, id=1)
     words = get_object_or_404(MainItem, id=2)
     target = get_object_or_404(MainItem, id=3)
-    regularMeeting = get_object_or_404(MainItem, id=7)    
+    regularMeeting = get_object_or_404(MainItem, id=4)    
     context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'presidentIntro':presidentIntro, 'words':words, 'target':target, 'regularMeeting':regularMeeting}
     if not pageId:
         return render(request, 'main/main.html', context)    
@@ -60,7 +60,7 @@ def about(request):
 
 def president(request):
     menuTop, menuLeft, menuBottom = makeMenus()
-    presidentIntro = get_object_or_404(MainItem, id=6)
+    presidentIntro = get_object_or_404(MainItem, id=1)
     context = {'menuTop':menuTop, 'menuLeft':menuLeft, 'menuBottom':menuBottom, 'presidentIntro':presidentIntro}
     return render(request, 'main/president.html',context)
 

@@ -23,10 +23,10 @@ def admin(request):
 @login_required
 def page(request):
     pages = Page.objects.all()
-    presidentIntro = get_object_or_404(MainItem, id=6)              #分別資料庫去取得首頁項目，方便以活的方式放入admin管理
+    presidentIntro = get_object_or_404(MainItem, id=1)              #分別資料庫去取得首頁項目，方便以活的方式放入admin管理
     words = get_object_or_404(MainItem, id=2)
     target = get_object_or_404(MainItem, id=3)
-    regularMeeting = get_object_or_404(MainItem, id=7)
+    regularMeeting = get_object_or_404(MainItem, id=4)
     menus, subMenu = [], []   
     for page in list(pages):
         if page.subMenuOrder == 0:    # Main menu
@@ -255,7 +255,7 @@ def upload(request):
 
 @login_required
 def presidentDetail(request):
-    presidentToUpdate = get_object_or_404(MainItem, id=6)
+    presidentToUpdate = get_object_or_404(MainItem, id=1)
     template = 'admin/presidentDetail.html'
     if request.method=='GET':
         mainItemForm = MainItemForm(instance=presidentToUpdate)
@@ -302,7 +302,7 @@ def targetDetail(request):
 
 @login_required
 def regularMeetingDetail(request):
-    regularMeetingToUpdate =  get_object_or_404(MainItem, id=7)
+    regularMeetingToUpdate =  get_object_or_404(MainItem, id=4)
     template='admin/regularMeetingDetail.html'
     if request.method=='GET':
         mainItemForm = MainItemForm(instance=regularMeetingToUpdate)     
