@@ -340,7 +340,8 @@ hr.headhr {
 	float: left;
 	padding: 0;
 	margin: 0;
-	padding: 16px 10px 19px;
+	margin-top: -10px;
+	padding: 9px 15px 15px;
 	border-right: 1px solid #d9d9d9;
 	position: relative;
 	zoom: 1;
@@ -490,7 +491,7 @@ hr.headhr {
 	margin: 0;
 }
 a#headerH1{                     /*logo title*/
-	font-size: 40px;
+	font-size: 30px;
 }
 .parallax-window{
 	height:350px;
@@ -499,6 +500,7 @@ a#headerH1{                     /*logo title*/
 }
 
 input#linkfb{
+  height:29px;
   color:white;
   background-color: #4267b2;
   border:1px solid #4267b2;
@@ -1661,8 +1663,14 @@ p.footerpriv img {
 hr.line1 {
 	width: 455px;
 }
-.my_navbar .nav li {
-	padding: 16px 27px 19px;
+
+.my_navbar .nav li {           /*header menu 邊界  大小*/
+  margin-top: -5px;
+	padding: 8px 20px 15px;
+}
+.my_navbar .nav ul {            /*header menu's submenu position*/
+  position: absolute;  
+  top: 50px;
 }
 .container {
 	padding: 0;
@@ -1700,8 +1708,12 @@ hr.headhr {
 	bottom: 0;
 }
 .my_navbar .nav li {
-	padding: 16px 8px 19px;
-	zoom: 1;
+	margin-top: -5px;
+  padding: 8px 2px 15px !important;	
+}
+.my_navbar .nav ul {            /*header menu's submenu position*/
+  position: absolute;  
+  top: 48px;
 }
 .my_navbar .nav li a {
 	font-size: 22px;
@@ -1718,6 +1730,7 @@ hr.headhr {
 }
 a#headerH1{
 	font-size: 30px;              /* logo 標題*/
+	line-height: 50px;
 }
 .responsiveCal {               /*https://thomas.vanhoutte.be/miniblog/make-google-calendar-iframe-responsive/*/	
 }
@@ -1728,6 +1741,20 @@ a#headerH1{
 }
 .parallax-window{             /* banner img size*/
 	height:200px;
+}
+input#linkfb{               /* fb link */
+  height:25px;
+  color:white;
+  background-color: #4267b2;
+  border:1px solid #4267b2;
+  border-radius:4px;
+  text-decoration:none;
+  font-size:14px;
+  margin-right:10px;
+  margin-top:40px;
+}
+img#logo{
+  width:17% !important;
 }
 }
 /******************************************************/
@@ -1800,7 +1827,6 @@ h2 {
 	padding: 0;
 	margin: 0 auto;
 	width: 100%;
-
 }
 .menuheader {
 	min-height: 50px;
@@ -1852,6 +1878,23 @@ a#headerH1{
 	height: 300px;
 }
 
+input#linkfb{               /* fb link */
+  height:25px;
+  color:white;
+  background-color: #4267b2;
+  border:1px solid #4267b2;
+  border-radius:4px;
+  text-decoration:none;
+  font-size:14px;
+  margin-right:10px;
+  margin-top:40px;
+}
+img#logo{
+  max-width: 7% !important;
+}
+ul.list1{
+  width:100%;           /*row1 width*/
+}
 }
 /**********************************************************/
 @media (max-width: 550px) {
@@ -1882,6 +1925,7 @@ a#headerH1{
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
 }
 /******************************************************/
 @media (max-width: 480px) {
@@ -1902,6 +1946,16 @@ p.footerpriv strong {
 	a#headerH1{
 	font-size: 20px;                               /* logo 標題*/
 }
+input#linkfb{               /* fb link */
+  height:25px;
+  color:white;
+  background-color: #4267b2;
+  border:1px solid #4267b2;
+  border-radius:4px;
+  text-decoration:none;
+  font-size:14px;
+  margin-top:85px; 
+}
 }
 /**********************************************************/
 @media (max-width: 420px) {
@@ -1914,6 +1968,29 @@ p.footerpriv strong {
 }
 		a#headerH1{
 	font-size: 20px;                           /* logo 標題*/
+}
+}
+/************************************************************/
+@media (max-width: 177px) {
+.collist6 {
+  width: 100%;
+  margin-bottom: 40px;
+}
+.colteam {
+  width: 100%;
+}
+    a#headerH1{
+  font-size: 20px;                           /* logo 標題*/
+}
+input#linkfb{               /* fb link */
+  height:25px;
+  color:white;
+  background-color: #4267b2;
+  border:1px solid #4267b2;
+  border-radius:4px;
+  text-decoration:none;
+  font-size:14px;
+  margin-top: 40px;
 }
 }
 /*Core variables and mixins*/
