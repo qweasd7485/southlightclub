@@ -352,8 +352,7 @@ hr.headhr {
 	text-decoration: none;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 24px;
-	line-height: 24px;
-	font-weight: 700;
+	line-height: 24px;	
 	color: white;
 	background: transparent;
 	padding: 0;
@@ -492,6 +491,7 @@ hr.headhr {
 }
 a#headerH1{                     /*logo title*/
 	font-size: 30px;
+	font-weight: bold;
 }
 .parallax-window{
 	height:350px;
@@ -549,8 +549,9 @@ input#linkfb{
 	margin: 0 0 10px 0;
 }
 .mbotlist1 {
-	margin-bottom: 43px;
+	/*margin-bottom: 43px;*/
 	color: #818181 !important;
+	max-height:100px;
 }
 .size2 {
 	font-size: 43px !important;
@@ -1587,6 +1588,7 @@ address p {
 .footerrow1 {
 	padding: 20px 0;
 	background: #4c5752 !important;
+	
 }
 p.footerpriv, #foo_div {
 	position: relative;
@@ -1966,9 +1968,10 @@ input#linkfb{               /* fb link */
 .colteam {
 	width: 100%;
 }
-		a#headerH1{
+a#headerH1{
 	font-size: 20px;                           /* logo 標題*/
 }
+
 }
 /************************************************************/
 @media (max-width: 177px) {
@@ -1979,7 +1982,7 @@ input#linkfb{               /* fb link */
 .colteam {
   width: 100%;
 }
-    a#headerH1{
+a#headerH1{
   font-size: 20px;                           /* logo 標題*/
 }
 input#linkfb{               /* fb link */
