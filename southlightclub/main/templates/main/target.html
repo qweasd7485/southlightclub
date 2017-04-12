@@ -20,12 +20,13 @@
       </article>
     </section>
   </div>
-      <div id="stuck_container" class="menu-bg">
+      <div id="stuck_container" class="menu-bg" style="height:60px">
         <div class="container">
             <div class="row ">   
                   <article class="col-lg-4 col-sm-4 col-xs-12">                     
-                      <img id=logo width="20%" height="70%" class=xs-hide src="{% static 'main/img/logo.png' %}">
-                      <a id="headerH1" style="color:white; " href="{% url 'main:main' %}" class=xs-hide>南&nbsp光&nbsp扶&nbsp輪&nbsp社</a>    
+                      <img id=logo style="width:13%" class=xs-hide src="{% static 'main/img/logo.png' %}">
+                      <a id="headerH1" style="color:white;" href="{% url 'main:main' %}" class=xs-hide>南&nbsp光&nbsp扶&nbsp輪&nbsp社</a>
+                      <!-- 注意行高 -->    
                   </article> 
                   <article class="col-lg-8 col-sm-8 col-xs-12">   
                       <div class="menuheader">

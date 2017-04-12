@@ -551,7 +551,7 @@ input#linkfb{
 .mbotlist1 {
 	/*margin-bottom: 43px;*/
 	color: #818181 !important;
-	max-height:100px;
+	height:100px;
 }
 .size2 {
 	font-size: 43px !important;
