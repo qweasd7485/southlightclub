@@ -387,7 +387,7 @@ hr.headhr {
 	background-position: 0 0;
 }
 .my_navbar .nav > li.sfHover > a, .my_navbar .nav > li.sfHover > a:hover, .my_navbar .nav > li > a:hover, .my_navbar .nav > li.active > a, .my_navbar .nav > li.active > a:hover {
-	color: #b33522;
+	color: orange;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
